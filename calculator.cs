@@ -5,7 +5,16 @@ class Calculator
     public void AddInput(string input)
     {
         //int number = Convert.ToInt32(input); // Fails if input is not a valid number
-        int number;
+        //         private readonly object lockObj = new object();
+
+
+        //         lock (lockObj) 
+        //         {
+        //             total += number;
+        //         }
+
+        //  string[] inputs = { "20", "abc", "", "30", "  ", "50" };
+        //         int number;
         if (int.TryParse(input, out number))
         {
             total += number;

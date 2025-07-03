@@ -24,7 +24,7 @@ class Program
         Calculator calc = new Calculator();
         calc.AddInput("20");
         calc.AddInput("abc"); // This crashes the program call
-        AddInput(""); // This also crashes the program
+        calc.AddInput(""); // This also crashes the program
     }
 }
 

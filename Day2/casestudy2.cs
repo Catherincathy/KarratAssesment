@@ -44,6 +44,7 @@ public class VipWaiter : Waiter
 {
     public void PriorityServe()
     {
+        Orders.ServeFood();
         Console.WriteLine("Priority service for VIP guest completed.");
     }
 

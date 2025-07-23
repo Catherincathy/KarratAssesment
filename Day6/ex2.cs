@@ -1,27 +1,36 @@
+
 using System;
 
-public class Vehicle
-
+public class DataManager
 {
-
-    public virtual void StartEngine()
-
+    private List<string> _data;
+ 
+    public List<string> Data
     {
-
-        Console.WriteLine("Vehicle engine started.");
-
+        get
+        {
+            if (_data == null) //
+            {
+                _data = LoadData(); //  
+            }
+            return _data;
+        }
+    }
+ 
+    private List<string> LoadData()
+    {
+        // Simulate loading data from a database
+        return new List<string> { "Alpha", "Beta", "Gamma" };
     }
 }
-
-public class Car : Vehicle
-
-{
-
-    public override void StartEngine()
-
-    {
-        Console.WriteLine("Car-specific checks...");
-
-        base.StartEngine();
-    }
-}
+//test method
+// [TestMethod]
+// public void Data_ShouldBeLoadedLazily()
+// {
+//     var manager = new DataManager();
+//     // Should be null before accessing the property
+//     Assert.IsNull(GetPrivateField(manager, "_data"));
+//     var data = manager.Data;
+//     // Should be initialized after property access
+//     Assert.IsNotNull(data);
+// }

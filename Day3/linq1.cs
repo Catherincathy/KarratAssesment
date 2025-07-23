@@ -2,23 +2,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-var departments = GetDepartments();   // 100 departments
-var employees = GetEmployees();       // 10,000 employees
+class Department { public int Id; public string Name; }
 
-// Group employees by DepartmentId
-var employeesByDept = employees
-    .GroupBy(e => e.DepartmentId)
-    .ToDictionary(g => g.Key, g => g.ToList());
+class Employee { public int Id; public int DepartmentId; public string Name; }
 
-foreach (var dept in departments)
+class Program
 {
-    // Try to get employees for this department
-    if (employeesByDept.TryGetValue(dept.Id, out var emps))
-    {
-        Console.WriteLine($"{dept.Name}: {emps.Count} employees");
-    }
-    else
-    {
-        Console.WriteLine($"{dept.Name}: 0 employees");
-    }
+	static void Main()
+	{
+		var departments = GetDepartments(); // Assume 100 departments
+
+		var employees = GetEmployees(); // Assume 10,000 employees
+
+		foreach (var dept in departments)
+		{
+			var emps = employees.Where(e => e.DepartmentId == dept.Id).ToList();
+			Console.WriteLine($"{dept.Name}: {emps.Count} employees");
+		}
+	}
+
+	// Dummy implementations for compilation
+	static List<Department> GetDepartments() => new List<Department>();
+	static List<Employee> GetEmployees() => new List<Employee>();
 }
